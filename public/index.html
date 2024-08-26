@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Iframe Opener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Open URL in Fullscreen Iframe</h1>
+    <input type="text" id="urlInput" placeholder="Enter website URL">
+    <button onclick="openIframe()">go</button>
+
+    <script>
+        function openIframe() {
+            var url = document.getElementById('urlInput').value;
+            if (!url) {
+                alert('Please enter a URL.');
+                return;
+            }
+            var win = window.open();
+            var iframe = win.document.createElement('iframe');
+            iframe.style.position = 'fixed';
+            iframe.style.width = '100vw';
+            iframe.style.height = '100vh';
+            iframe.style.top = '0';
+            iframe.style.left = '0';
+            iframe.style.right = '0';
+            iframe.style.bottom = '0';
+            iframe.style.zIndex = '2147483647';
+            iframe.style.backgroundColor = 'white';
+            iframe.style.border = 'none';
+            iframe.src = url;
+            win.document.body.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
